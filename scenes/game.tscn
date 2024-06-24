@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt48p8kf7ke05"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_k33w6"]
+[ext_resource type="Texture2D" uid="uid://cl6hi72igh5bq" path="res://assets/background.png" id="1_mq7iw"]
+[ext_resource type="PackedScene" uid="uid://6h2fbx0adafm" path="res://scenes/boss.tscn" id="2_kpccn"]
+[ext_resource type="PackedScene" uid="uid://jju5jayupj43" path="res://scenes/player.tscn" id="3_lmxp8"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_k33w6")
+
+[node name="Label" type="Label" parent="."]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 244.0
+offset_top = 272.0
+offset_right = 819.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "YOUR TURN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(580.25, 326.25)
+scale = Vector2(0.59974, 0.595833)
+texture = ExtResource("1_mq7iw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1154.0
+offset_bottom = 650.0
+color = Color(0.533333, 0.533333, 0.533333, 0.478431)
+
+[node name="Boss" parent="." instance=ExtResource("2_kpccn")]
+position = Vector2(897, 468)
+scale = Vector2(1.8, 1.8)
+
+[node name="Player" parent="." instance=ExtResource("3_lmxp8")]
+position = Vector2(230, 442)
+scale = Vector2(2, 2)
+
+[node name="Slash" type="Button" parent="."]
+offset_left = 186.0
+offset_top = 539.0
+offset_right = 400.0
+offset_bottom = 587.0
+text = "Slash (5 damage)"
+
+[node name="Fireball" type="Button" parent="."]
+offset_left = 463.0
+offset_top = 539.0
+offset_right = 677.0
+offset_bottom = 587.0
+text = "[2] Fireball (7 damage)"
+
+[node name="Heal" type="Button" parent="."]
+offset_left = 758.0
+offset_top = 537.0
+offset_right = 972.0
+offset_bottom = 585.0
+text = "+10 HP"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Slash" to="." method="_on_slash_pressed"]
+[connection signal="pressed" from="Fireball" to="." method="_on_fireball_pressed"]
+[connection signal="pressed" from="Heal" to="." method="_on_heal_pressed"]

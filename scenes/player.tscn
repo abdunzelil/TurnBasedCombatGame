@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://jju5jayupj43"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_d260r"]
+[ext_resource type="Texture2D" uid="uid://bshoxg82wnxrt" path="res://assets/player.png" id="1_qhbi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi38k"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jcbi"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_d260r")
+
+[node name="AnimatedSprite" type="Sprite2D" parent="."]
+position = Vector2(1.00001, -54)
+scale = Vector2(0.223333, 0.199425)
+texture = ExtResource("1_qhbi7")
+
+[node name="PlayerHPBar" type="ProgressBar" parent="."]
+offset_left = -53.0
+offset_top = -140.0
+offset_right = 52.0
+offset_bottom = -129.0
+theme_override_styles/background = SubResource("StyleBoxFlat_gi38k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3jcbi")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = -74.0
+offset_top = -171.0
+offset_right = 76.0
+offset_bottom = -148.0
+text = "effect here"
+horizontal_alignment = 1
+vertical_alignment = 1
